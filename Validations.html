@@ -10,15 +10,41 @@
 
     <input 
      id="username" type="username" placeholder="Enter Username">
+
+
+     <input type="email" id="email" placeholder="Enter Email">
+
+     <input type="password" id="password" placeholder="Enter Password">
     <p id="warning"></p>
 
     <button onclick="Validations()">Register</button>
 
 
 
-    <input disabled >
+   
 
     <script>
+
+ let capitalAlphabets = /[A-Z]/g;
+    let smallAlphabets = /[a-z]/g;
+    let numbers = /[0-9]/g;
+
+    console.log(capitalAlphabets,smallAlphabets,numbers);
+
+    if("hanmukh".match(capitalAlphabets)) {
+        console.log("yes, it containscap letters");
+    }    
+
+
+
+
+
+
+
+
+
+
+
 
 
 document.querySelector("#username").addEventListener("input", function() {
@@ -35,6 +61,11 @@ document.querySelector("#username").addEventListener("input", function() {
 function Validations() {
 
   let inputboxusername=  document.querySelector("#username").value
+    let inputboxemail=  document.querySelector("#email").value
+    let inputboxpassword=  document.querySelector("#password").value
+
+   
+
 
   if(inputboxusername.length <3){
 
@@ -52,6 +83,18 @@ else if(inputboxusername.includes(" ")){
 }
 else if(inputboxusername.includes("@") || inputboxusername.includes("#") || inputboxusername.includes("$")){
     document.querySelector("#warning").innerText = "Username must not contain special characters like @, #, $";
+    document.querySelector("#warning").style.color = "red"; 
+}
+else if(inputboxemail.length ==0){
+    document.querySelector("#warning").innerText = "Email cannot be empty";
+    document.querySelector("#warning").style.color = "red"; 
+}
+else if(!inputboxemail.includes("@") || !inputboxemail.includes(".")){
+    document.querySelector("#warning").innerText = "Not a valid email address";
+    document.querySelector("#warning").style.color = "red"; 
+}
+else if(inputboxemail.length < 5){
+    document.querySelector("#warning").innerText = "Email must be at least 5 characters long";
     document.querySelector("#warning").style.color = "red"; 
 }
 
